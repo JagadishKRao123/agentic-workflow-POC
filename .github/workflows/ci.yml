@@ -9,6 +9,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Add this - max 10 mins for entire job
 
     strategy:
       matrix:
@@ -23,10 +24,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     
     - name: Install dependencies
-      run: npm install
+      run: npm install --legacy-peer-deps
+      timeout-minutes: 5
     
     - name: Run tests
       run: npm test
+      timeout-minutes: 5
     
     - name: Check test coverage
-      run: npm test -- --coverage
+      run: npm test -- --coverage --forceExit
+      timeout-minutes: 5
