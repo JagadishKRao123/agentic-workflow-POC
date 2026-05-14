@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 // Bug: This endpoint returns wrong message
 app.get('/status', (req, res) => {
   res.json({ status: 'error', message: 'Application is down' });
