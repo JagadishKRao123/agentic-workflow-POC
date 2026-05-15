@@ -1,21 +1,16 @@
 {
   "name": "agentic-workflow-poc",
   "version": "1.0.0",
-  "description": "GitHub Agentic Workflow PoC",
-  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "jest --forceExit --detectOpenHandles --testTimeout=10000",
-    "dev": "node app.js"
+    "test": "jest --forceExit --detectOpenHandles --testTimeout=10000"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "jest": "^29.0.0",
-    "supertest": "^6.3.0"
+  "dependencies": { "express": "^4.18.2" },
+  "devDependencies": { "jest": "^29.0.0", "supertest": "^6.3.0" },
+  "jest": {
+    "collectCoverageFrom": ["app.js"],
+    "coverageThreshold": {
+      "global": { "lines": 80 }
+    }
   }
 }
